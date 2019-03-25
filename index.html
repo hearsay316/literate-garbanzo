@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="cn-zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自适应</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            min-height: 100%;
+        }
+        #app{
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
+            min-height: 100%;
+        }
+        .header{
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #007aff;
+        }
+        button,
+        input {
+            /*background-color: #f2f2f2;*/
+            font-family: 微软雅黑;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .login-form {
+            height: 100%;
+            position: relative;
+        }
+        .app{
+            width: 100%;
+            position: absolute;
+            bottom: 100px;
+        }
+
+        .z-form {
+            width: calc(100% - 82px);
+            margin: 0 auto;
+        }
+
+        .form-header {
+            padding: 45px 0 45px 0;
+            font-size: 0.48rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .z-group {
+            position: relative;
+            margin-bottom: 2px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .outline {
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        .bg-outline {
+            background-color: #cccccc;
+        }
+
+        .z-form-inp:focus {
+            border: none;
+            outline: none;
+            /*background-color: #f2f2f2;*/
+        }
+
+        .clear-fix::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .z-form-lab {
+            display: inline-block;
+            width: 75px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .z-form-lab,
+        .z-form-inp {
+            float: left;
+            line-height: 35px;
+            padding: 5px 0;
+            font-size: 0.32rem;
+            border: none;
+            letter-spacing: 1px;
+        }
+
+        input::placeholder {
+            color: #a3a3a3;
+            font-size: 0.32rem;
+            /*background-color: #f2f2f2;*/
+        }
+
+
+        .z-box {
+            padding: 20px 41px;
+            display: flex;
+            justify-content: space-between;
+            /*align-items: center;*/
+            font-size: 0.38rem;
+        }
+
+        .z-box > a {
+            color: #ffffff;
+        }
+
+        .btn-box {
+            height: 44px;
+            text-align: center;
+        }
+        .btn-box >img{
+            padding: 0 41px;
+            width: 100%;
+        }
+
+        .btn {
+            width: calc(100% - 80px);
+            line-height: 32px;
+            padding: 4px 0;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            font-size: 0.32rem;
+            background: #409eff;
+        }
+
+
+        .btn:focus {
+            outline: none;
+        }
+
+        .z-margin-15 {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<div class="header">
+    <img src="http://vip.irunen.com/images/getAvatar.do.png" alt="">
+</div>
+    <div class="main">
+        <form class="login">
+                <div class="z-form">
+                    <div class="z-group clear-fix">
+                        <label class="z-form-lab" for="first-name">账号</label>
+                        <input class="z-form-inp"  v-model="login.username"  autocomplete="new-password" type="text"
+                               id="first-name" placeholder="请输入用户名">
+                        <div class="outline bg-outline"></div>
+                    </div>
+                    <div class="z-group clear-fix">
+                        <label class="z-form-lab" for="first-pass">密码</label>
+                        <input class="z-form-inp" v-model="login.password" autocomplete="new-password" type="password"
+                               id="first-pass" placeholder="请输入密码">
+                        <div class="outline bg-outline"></div>
+                    </div>
+                </div>
+                <div class="z-box">
+                    <router-link to="findPwd">找回密码</router-link>
+                    <router-link to="reg">注册</router-link>
+                </div>
+                <div class="btn-box">
+                    <button
+                    class="btn z-margin-15">
+                       登陆
+                    </button>
+
+                </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
