@@ -25,7 +25,7 @@ func main() {
 			fmt.Println("读取结束", n)
 			return
 		}
-		w, err := c. (buf[:n])
+		w, err := c.Write(buf[:n])
 		if err != nil {
 			fmt.Println("err", err)
 		}
