@@ -1,6 +1,7 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="GoDuplicate" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="GoUnhandledErrorResult" enabled="true" level="WARNING" enabled_by_default="true">
       <methods>
         <method importPath="hash" receiver="Hash" name="Write" />
@@ -16,6 +17,7 @@
         <method importPath="os" receiver="*File" name="Close" />
         <method importPath="net" receiver="Conn" name="Close" />
         <method importPath="net" receiver="Listener" name="Close" />
+        <method importPath="net" receiver="*UDPConn" name="Close" />
       </methods>
     </inspection_tool>
   </profile>
