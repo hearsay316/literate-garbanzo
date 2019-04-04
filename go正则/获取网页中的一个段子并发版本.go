@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-func SpiderPage(i int) {
+func SpiderPage(i int, page chan int) {
 	url := "https://www.pengfue.com/xiaohua_" + strconv.Itoa(i) + ".html"
 	result, err := httpget(url)
 	if err != nil {
@@ -32,6 +32,7 @@ func SpiderPage(i int) {
 		fileContent = append(fileContent, content)
 	}
 	fileCreate(i, flieTitle, fileContent)
+	page <- i
 }
 func fileCreate(i int, flieTitle, fileContent []string) {
 	path := "F:/coding/gogogo/go正则/" + strconv.Itoa(i) + "页.txt"
@@ -95,8 +96,12 @@ func httpget(url string) (result string, err error) {
 }
 func toWork(start int, eng int) {
 	fmt.Printf("正在爬取%d到%d的起始页:", start, eng)
+	page := make(chan int)
 	for i := start; i <= eng; i++ {
-		SpiderPage(i)
+		go SpiderPage(i, page)
+	}
+	for i := start; i <= eng; i++ {
+		fmt.Printf("这个%d是并发\n", <-page)
 	}
 }
 func main() {
